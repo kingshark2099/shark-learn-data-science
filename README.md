@@ -1,2 +1,2 @@
 # shark-learn-data-science
-a repository for binder
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/kingshark2099/shark-learn-data-science/main)
