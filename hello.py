@@ -47,6 +47,15 @@ rated_movies.loc[:,["Name", "Year","Rating"]].set_index("Year")
 # grouping
 # count how many movies each ratings
 ratings.groupby("Rating").size()
+# group by decades release
+def decade(row):
+    if row.Year >= 2020: row.Year = "2020s"
+    elif row.Year >= 2010: row.Year = "2010s"
+    elif row.Year >= 2000: row.Year = "2000s"
+    else: row.Year = "1900s"
+    return row
+group_by_decade = ratings.apply(decade, axis='columns').sort_values('Year').loc[:,['Name','Year','Rating']]
+group_by_decade.groupby("Year").size() # get how many movies each decades
 
 # missing values
 # find out whether theres a movie without release year data
