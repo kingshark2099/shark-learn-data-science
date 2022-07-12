@@ -31,3 +31,17 @@ ratings.loc[(ratings.Year>= 2020) & (ratings.Rating >= 4.0)]
 watched.loc[(watched.Year > 2020) | (watched.Year < 2000)]
 # get movies released in 2010 & 2020 and remove Letterboxd URL and Date columns
 ratings.loc[ratings.Year.isin([2010, 2020]), ['Name', 'Year','Rating']].sort_values('Year').set_index('Year')
+
+# functions and maps
+# get all the release year from wacthed movies
+watched.Year.unique()
+# counting how many movies i watched each year
+watched.Year.value_counts()
+# using apply() to get ratings/10
+def rate(row):
+    row.Rating = row.Rating + 5.0
+    return row
+rated_movies = ratings.apply(rate, axis='columns').sort_values("Rating", ascending=False)
+rated_movies.loc[:,["Name", "Year","Rating"]].set_index("Year")
+
+
