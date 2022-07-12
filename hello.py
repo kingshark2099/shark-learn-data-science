@@ -44,4 +44,23 @@ def rate(row):
 rated_movies = ratings.apply(rate, axis='columns').sort_values("Rating", ascending=False)
 rated_movies.loc[:,["Name", "Year","Rating"]].set_index("Year")
 
+# grouping
+# count how many movies each ratings
+ratings.groupby("Rating").size()
+
+# missing values
+# find out whether theres a movie without release year data
+watched[pd.isnull(watched.Year)]
+# changing missing values of Date column with TBA
+watched.Date.fillna("TBA")
+# get type of column
+watched.Date.dtype
+watched.Date.astype(str)
+# get year wacthed
+watched.loc[0, "Date"].split("-")
+def year(row):
+    date = row.Date.split("-")
+    row.Date = date[0]
+    return row
+ratings.apply(year, axis='columns').loc[:, ["Name", "Rating", "Date"]].set_index("Date")
 
