@@ -3,6 +3,19 @@ import pandas as pd
 import matplotlib.pyplot as plt
 # git fetch && git merge origin/main
 
+# read data
+watched = pd.read_csv('watched.csv')
+watchlist = pd.read_csv('watchlist.csv')
+ratings = pd.read_csv('ratings.csv')
+diary = pd.read_csv('diary.csv')
+profile = pd.read_csv('profile.csv')
+reviews = pd.read_csv('reviews.csv')
+list_anime = pd.read_csv('anime.csv')
+list_physics = pd.read_csv('physics-y.csv')
+list_revenge = pd.read_csv('revenge-is-the-fuel.csv')
+list_women = pd.read_csv('women-in-films.csv')
+list_twist = pd.read_csv('when-i-am-not-twisted-by-reality-movies-instead.csv')
+
 # get all columns names
 watched.columns.tolist() 
 ratings.columns.tolist()
