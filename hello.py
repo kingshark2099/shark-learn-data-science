@@ -56,6 +56,13 @@ def rate(row):
     return row
 rated_movies = ratings.apply(rate, axis='columns').sort_values("Rating", ascending=False)
 rated_movies.loc[:,["Name", "Year","Rating"]].set_index("Year")
+# get year wacthed
+watched.loc[0, "Date"].split("-")
+def year(row):
+    date = row.Date.split("-")
+    row.Date = date[0]
+    return row
+ratings.apply(year, axis='columns').loc[:, ["Name", "Rating", "Date"]].set_index("Date")
 
 # grouping
 # count how many movies each ratings
@@ -78,11 +85,3 @@ watched.Date.fillna("TBA")
 # get type of column
 watched.Date.dtype
 watched.Date.astype(str)
-# get year wacthed
-watched.loc[0, "Date"].split("-")
-def year(row):
-    date = row.Date.split("-")
-    row.Date = date[0]
-    return row
-ratings.apply(year, axis='columns').loc[:, ["Name", "Rating", "Date"]].set_index("Date")
-
