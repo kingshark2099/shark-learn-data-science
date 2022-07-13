@@ -74,8 +74,9 @@ def decade(row):
     elif row.Year >= 2000: row.Year = "2000s"
     else: row.Year = "1900s"
     return row
+# get how many movies each decades
 group_by_decade = ratings.apply(decade, axis='columns').sort_values('Year').loc[:,['Name','Year','Rating']]
-group_by_decade.groupby("Year").size() # get how many movies each decades
+group_by_decade.rename(columns={'Year': 'Decade'}).groupby("Decade").size() 
 
 # missing values
 # find out whether theres a movie without release year data
@@ -85,3 +86,8 @@ watched.Date.fillna("TBA")
 # get type of column
 watched.Date.dtype
 watched.Date.astype(str)
+
+# combining
+movies = pd.concat([watched, watchlist])
+movies
+
