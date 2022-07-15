@@ -1,8 +1,3 @@
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-# git fetch && git merge origin/main
-
 # object creation
 fav_movies = pd.Series(["Interstellar", 
                         "Little Women",
