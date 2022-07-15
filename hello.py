@@ -1,8 +1,3 @@
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-# git fetch && git merge origin/main
-
 # read data
 watched = pd.read_csv('watched.csv')
 watchlist = pd.read_csv('watchlist.csv')
